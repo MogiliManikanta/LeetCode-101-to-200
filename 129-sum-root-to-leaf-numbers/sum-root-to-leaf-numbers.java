@@ -14,12 +14,15 @@
  * }
  */
 class Solution {
-    private int result = 0;
+    private int result=0;
     public int sumNumbers(TreeNode root) {
-        makeSumTraverse(root,0);
+        if(root==null){
+            return 0;
+        }
+        makeSumTree(root,0);
         return result;
     }
-    private void makeSumTraverse(TreeNode root,int temp){
+    private void makeSumTree(TreeNode root,int temp){
         if(root==null){
             return;
         }
@@ -27,7 +30,7 @@ class Solution {
         if(root.left==null && root.right==null){
             result+=temp;
         }
-        makeSumTraverse(root.left,temp);
-        makeSumTraverse(root.right,temp);
+        makeSumTree(root.left,temp);
+        makeSumTree(root.right,temp);
     }
 }
